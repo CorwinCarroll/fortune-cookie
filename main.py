@@ -51,15 +51,3 @@ class MainHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
-
-
-        # movie = self.getRandomMovie()
-
-        # # build the response string
-        # content = "<h1>Movie of the Day</h1>"
-        # content += "<p>" + movie + "</p>"
-
-        # # TODO: pick a different random movie, and display it under
-        # # the heading "<h1>Tommorrow's Movie</h1>"
-
-        # self.response.write(content)

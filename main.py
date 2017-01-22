@@ -15,11 +15,51 @@
 # limitations under the License.
 #
 import webapp2
+import random
+
+def getRandomFortune():
+	fortunes = [
+	"Train yourself to let go of everything you fear to lose",
+	"Fear leads to anger. Anger leads to hate. Hate leads to suffering.",
+	"Always pass on what you have learned.",
+	"You must unlearn what you have learned.",
+	"Many of the truths that we cling to depend on our point of view.",
+	"Do or do not. There is no try."
+	]
+
+	return(random.choice(fortunes))
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+    	header = "<h1>Fortunes From Cookies</h1>"
+
+    	fortune = "<strong>" + getRandomFortune() + "</strong>"
+    	fortune_paragraph = "<p>Your fortune: " + fortune + " </p>"
+
+    	lucky_number = "<strong>" + str(random.randint(1, 9999)) + "</strong>"
+    	number_paragraph = "<p>Your lucky number: " + lucky_number  + " </p>"
+
+    	more_cookies_button = "<p><a href='.'><button>More Cookie Knowledge!</button></a></p>"
+
+    	content = header + fortune_paragraph + number_paragraph + more_cookies_button
+
+
+        self.response.write(content)
+
+
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
+
+
+        # movie = self.getRandomMovie()
+
+        # # build the response string
+        # content = "<h1>Movie of the Day</h1>"
+        # content += "<p>" + movie + "</p>"
+
+        # # TODO: pick a different random movie, and display it under
+        # # the heading "<h1>Tommorrow's Movie</h1>"
+
+        # self.response.write(content)
